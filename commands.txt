@@ -1,0 +1,9 @@
+CREATE TABLE `stories` (
+  `story` mediumtext NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `author` varchar(100) DEFAULT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
