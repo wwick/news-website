@@ -14,26 +14,24 @@
     require 'database.php';
     $story_id = $_REQUEST["id"];
 
-    $stmt = $mysqli->prepare("SELECT \"title\"  FROM stories WHERE id=".$story_id);
-    if(!$stmt){
-        echo "command failed";
-        printf("Query Prep Failed: %s\n", $mysqli->error);
-        exit;
-    }
+    if ($stmt = $mysqli->prepare("SELECT \"title\" FROM stories")) {
+        $stmt->execute();
 
-    $stmt->execute();
+        /* bind variables to prepared statement */
+        if ($stmt->bind_result($title)) {
+  	    echo "yay";
+        }
 
-    $stmt->bind_result($title);
-    while ($stmt->fetch()) {
-	echo $title;
-        printf("\t<p>%s</p>\n", htmlspecialchars($title));
+        /* fetch values */
+        while ($stmt->fetch()) {
+            printf("%s\n", $title);
+        }
+    	$stmt->close();
     }
-    $stmt->close();
-    
-    session_start();
-    $user = $_SESSION['user'];
+    $mysqli->close();
 
     ?>
+
 </body>
 </html>
 
