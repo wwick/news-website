@@ -11,29 +11,47 @@
 
     <?php
 
-    require 'database.php';
-    $story_id = $_REQUEST["id"];
+    // require 'database.php';
+    // $story_id = $_REQUEST["id"];
 
-    $stmt = $mysqli->prepare("SELECT \"title\"  FROM stories WHERE id=".$story_id);
+    // if ($stmt = $mysqli->prepare("SELECT \"title\" FROM stories")) {
+    //     $stmt->execute();
+
+    //     /* bind variables to prepared statement */
+    //     if ($stmt->bind_result($title)) {
+  	//     echo "yay";
+    //     }
+
+    //     /* fetch values */
+    //     while ($stmt->fetch()) {
+    //         printf("%s\n", $title);
+    //     }
+    // 	$stmt->close();
+    // }
+    // $mysqli->close();
+
+    require 'database.php';
+
+    $stmt = $mysqli->prepare("select title, story from stories");
     if(!$stmt){
-        echo "command failed";
         printf("Query Prep Failed: %s\n", $mysqli->error);
         exit;
     }
 
     $stmt->execute();
 
-    $stmt->bind_result($title);
-    while ($stmt->fetch()) {
-	echo $title;
+    $stmt->bind_result($tile, $story);
+
+    while($stmt->fetch()){
         printf("\t<p>%s</p>\n", htmlspecialchars($title));
+        printf("\t<p>%s</p>\n", htmlspecialchars($story));
+
     }
     $stmt->close();
-    
-    session_start();
-    $user = $_SESSION['user'];
+    $mysqli->close();
 
     ?>
+
 </body>
 </html>
 
