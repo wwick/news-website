@@ -11,23 +11,43 @@
 
     <?php
 
+    // require 'database.php';
+    // $story_id = $_REQUEST["id"];
+
+    // if ($stmt = $mysqli->prepare("SELECT \"title\" FROM stories")) {
+    //     $stmt->execute();
+
+    //     /* bind variables to prepared statement */
+    //     if ($stmt->bind_result($title)) {
+  	//     echo "yay";
+    //     }
+
+    //     /* fetch values */
+    //     while ($stmt->fetch()) {
+    //         printf("%s\n", $title);
+    //     }
+    // 	$stmt->close();
+    // }
+    // $mysqli->close();
+
     require 'database.php';
-    $story_id = $_REQUEST["id"];
 
-    if ($stmt = $mysqli->prepare("SELECT \"title\" FROM stories")) {
-        $stmt->execute();
-
-        /* bind variables to prepared statement */
-        if ($stmt->bind_result($title)) {
-  	    echo "yay";
-        }
-
-        /* fetch values */
-        while ($stmt->fetch()) {
-            printf("%s\n", $title);
-        }
-    	$stmt->close();
+    $stmt = $mysqli->prepare("select title, story from stories");
+    if(!$stmt){
+        printf("Query Prep Failed: %s\n", $mysqli->error);
+        exit;
     }
+
+    $stmt->execute();
+
+    $stmt->bind_result($tile, $story);
+
+    while($stmt->fetch()){
+        printf("\t<p>%s</p>\n", htmlspecialchars($title));
+        printf("\t<p>%s</p>\n", htmlspecialchars($story));
+
+    }
+    $stmt->close();
     $mysqli->close();
 
     ?>

@@ -35,18 +35,12 @@
     }
     echo "</tr>\n";
     $stmt->close();
+    $mysqli->close();
 
 ?>
 
 </table>
 <a href="write.php">Click here to write a story</a>
-
-        
-
-
-
-
-
 
 
 </body>
