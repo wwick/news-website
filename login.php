@@ -2,7 +2,6 @@
 require 'database.php';
 session_start();
 $user = $_POST["user"];
-$_SESSION["user"] = $user;
 $password = $_POST["password"];
 $hashedPass = password_hash($password, PASSWORD_DEFAULT);
 $taken = 0;
@@ -46,6 +45,7 @@ if($_POST["new"]){
 	while($stmt->fetch()){
 		if($user === $tableUser){
 			if(password_verify($password, $tablePass)){
+				$_SESSION["user"] = $id;
 				header("Location:homepage.php");
 			} else{
 				echo "wrong password";
