@@ -20,16 +20,20 @@ if($_POST["new"]){
 			break;        
 		}
 
-	}if
-	$stmt->close;
-	$stmt = $mysqli->prepare("insert into users (user, password) values ('$user', '$hashedPass')");
-	if(!$stmt){
-		printf("Query Prep Failed: %s\n", $mysqli->error);
-		exit;
 	}
-	$stmt->execute();
-	$stmt->close();
-	//header("Location:homepage.php");
+	if($taken){
+		echo "This username is taken. <a href=\"login.html\"> Try again? </a>";
+	} else{
+		$stmt->close;
+		$stmt = $mysqli->prepare("insert into users (user, password) values ('$user', '$hashedPass')");
+		if(!$stmt){
+			printf("Query Prep Failed: %s\n", $mysqli->error);
+			exit;
+		}
+		$stmt->execute();
+		$stmt->close();
+		header("Location:homepage.php");
+	}
 
 } else {
 	$stmt = $mysqli->prepare("select id, user, password from users");
