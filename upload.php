@@ -1,7 +1,7 @@
 <?php
 require "database.php";
 session_start();
-$userID =  $_SESSION["user"];
+$user_id =  $_SESSION["user"];
 $story = $_POST["story"];
 $author = $_POST["author"];
 $title = $_POST["title"];
@@ -13,7 +13,7 @@ if(!$stmt){
 	exit;
 }
 
-$stmt->bind_param('sssi', $story, $title, $author, $userID);
+$stmt->bind_param('sssi', $story, $title, $author, $user_id);
 
 $stmt->execute();
 

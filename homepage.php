@@ -17,7 +17,7 @@
 
 require 'database.php';
 session_start();
-$stmt = $mysqli->prepare("select title, author, id from stories");
+$stmt = $mysqli->prepare("select title, author, story_id from stories");
 if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
 	exit;
