@@ -14,7 +14,7 @@
     require 'database.php';
     $story_id = $_REQUEST["id"];
 
-    $stmt = $mysqli->prepare("select title, story, author from stories where id=".$story_id);
+    $stmt = $mysqli->prepare("SELECT \"title\", \"story\", \"author\" FROM stories WHERE id=".$story_id);
     if(!$stmt){
         echo "command failed";
         printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -24,7 +24,7 @@
     $stmt->execute();
 
     $stmt->bind_result($tile, $story, $author);
-    echo 'hello world';
+    echo $title;
     printf("\t<p>%s</p>\n", htmlspecialchars($author));
     printf("\t<p>%s</p>\n", htmlspecialchars($story));
 
