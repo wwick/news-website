@@ -39,7 +39,7 @@
 ?>
 
 </table>
-
+<a href="write.html">Click here to write a story</a>
 
         
 
