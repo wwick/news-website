@@ -11,7 +11,7 @@
 
     <?php
 
-    require(database.php);
+    require 'database.php';
     $story_id = $_REQUEST["id"];
 
     $stmt = $mysqli->prepare("select title, story, author from stories where id=".$story_id);
