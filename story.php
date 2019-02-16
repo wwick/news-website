@@ -31,8 +31,9 @@
     // $mysqli->close();
 
     require 'database.php';
+    $story_id=$_REQUEST['id'];
 
-    $stmt = $mysqli->prepare("select title, story from stories");
+    $stmt = $mysqli->prepare("select title, author, story from stories where id=".$story_id);
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
         exit;
@@ -40,10 +41,11 @@
 
     $stmt->execute();
 
-    $stmt->bind_result($tile, $story);
+    $stmt->bind_result($title, $author, $story);
 
     while($stmt->fetch()){
         printf("\t<p>%s</p>\n", htmlspecialchars($title));
+        printf("\t<p>%s<p>\n", htmlspecialchars($author));
         printf("\t<p>%s</p>\n", htmlspecialchars($story));
 
     }
