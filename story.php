@@ -53,7 +53,11 @@
     $mysqli->close();
 
     ?>
-
+<h3>Comment here!</h3></br>
+<textarea placeholder="Type your comment here!" name="comment" form="comment"></textarea></br>
+<form action="comment.php" method="post">
+<input type="submit" value="Comment">
+</form>
 </body>
 </html>
 
