@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>News</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
     <table>
@@ -26,10 +27,11 @@
 
     $stmt->bind_result($tile, $author);
 
-    echo "<tr>\n";
     while($stmt->fetch()){
+        echo "<tr>\n";
         printf("\t<td>%s</td>\n", htmlspecialchars($tile));
         printf("\t<td>%s</td>\n", htmlspecialchars($author));
+        echo "</tr>\n";
     }
     echo "</tr>\n";
     $stmt->close();
