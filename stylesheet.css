@@ -1,0 +1,105 @@
+table {  
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    width: 640px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 16px;
+}
+
+td, th {
+    border: 1px solid black;
+    height: 30px;
+    text-align: center;
+ }
+
+thead {  
+    background: rgb(5, 137, 255);
+    font-weight: bold;
+    color: White;
+}
+
+tbody > tr:nth-child(odd) {background: rgb(245, 248, 207);}
+tbody > tr:nth-child(even) {background: #FFF}
+tbody {color: black}
+
+div#main{
+    overflow: auto;
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    display: block;
+    background-size: cover;
+    background-image: linear-gradient(magenta, orange);
+    height: 100%;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+div#delete{
+    background-color: RED;
+}
+/*button information was recieved from https://www.w3schools.com/css/css3_buttons.asp*/
+.button{
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 4px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+    
+}
+.button1{
+    background-color: white; 
+    color: black; 
+    border: 2px solid red;
+}
+.button1:hover{
+    background-color: red;
+    color: white;
+}
+.button2{
+    background-color: white;
+    color: black;
+    border: 2px solid green;
+}
+.button2:hover{
+    background-color: green;
+    color: white;
+}
+.button3{
+    background-color:white;
+    color: black;
+    border: 2px solid black;   
+}
+.button3:hover{
+    background-color: white;
+    color: white;
+}
+.container{
+    height: 500px;
+    position: relative;
+}
+body{
+    width: 500px; /* how wide to make your web page */
+    margin: 0 auto;
+    padding: 0;
+    font:12px/16px Helvetica, Arial, sans-serif; /* default font */
+}
+/* learned how to center here https://www.w3schools.com/css/css_align.asp */
+.center {
+  margin: 0;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
