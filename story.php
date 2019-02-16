@@ -23,7 +23,7 @@
     $stmt->execute();
 
     $stmt->bind_result($tile, $story, $author);
-
+    printf("\t<p>%s</p>\n", htmlspecialchars($author));
     printf("\t<p>%s</p>\n", htmlspecialchars($story));
 
     
