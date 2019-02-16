@@ -12,7 +12,7 @@
 	<?php
 		session_start();
 		if (isset($_SESSION['user'])) {
-			echo "You are logged in as ".$user;
+			echo "You are logged in as ".$_SESSION['user'];
 		} else {
 			echo "
 			Create New User
@@ -46,7 +46,6 @@
 <?php
 
 require 'database.php';
-session_start();
 $stmt = $mysqli->prepare("select title, author, story_id from stories");
 if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
