@@ -2,12 +2,13 @@ CREATE TABLE `stories` (
   `id` smallint(5) unsigned NOT NULL,
   `user_id` smallint(5) unsigned NOT NULL,
   `title` varchar(255) NOT NULL,
+  `story` text NOT NULL,
   `author` varchar(100) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `stories_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 
 
 CREATE TABLE `users` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
