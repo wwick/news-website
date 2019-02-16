@@ -6,7 +6,7 @@ $password = $_POST["password"];
 $hashedPass = password_hash($password, PASSWORD_DEFAULT);
 $taken = 0;
 if($_POST["new"]){
-	$stmt = $mysqli->prepare("select user_id, user, password from users");
+	$stmt = $mysqli->prepare("select user from users");
 	if(!$stmt) {
 		printf("Query Prep Failed: %s\n", $mysqli->error);
 		exit;
@@ -22,7 +22,7 @@ if($_POST["new"]){
 	if ($taken) {
 		echo "This username is taken. <a href=\"login.html\"> Try again? </a>";
 	} else { 
-		$stmt->close;
+		$stmt->close();
 		$stmt = $mysqli->prepare("insert into users (user, password) values ('$user', '$hashedPass')");
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
