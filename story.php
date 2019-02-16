@@ -16,6 +16,7 @@
 
     $stmt = $mysqli->prepare("select title, story, author from stories where id=".$story_id);
     if(!$stmt){
+        echo "command failed";
         printf("Query Prep Failed: %s\n", $mysqli->error);
         exit;
     }
@@ -23,6 +24,7 @@
     $stmt->execute();
 
     $stmt->bind_result($tile, $story, $author);
+    echo 'hello world';
     printf("\t<p>%s</p>\n", htmlspecialchars($author));
     printf("\t<p>%s</p>\n", htmlspecialchars($story));
 
