@@ -31,7 +31,7 @@ if($_POST["new"]){
 		}
 		$stmt->execute();
 		$stmt->close();
-		header("Location:homepage.php");
+		header("Location:login.html");
 	}
 
 } else {
