@@ -5,9 +5,14 @@
     $_SESSION["user"] = $user;
     $password = $_POST["password"];
     
-    if (password_verify($password, $hash)) {
-        header("website.php");
-    } else {
-        header("login.html");
+    $hashedPass = password_hash($password, PASSWORD_DEFAULT);
+    //echo $hashedPass;
+    $stmt = $mysqli->prepare("insert into users (user, password) values ('$user', '$hashedPass')");
+    if(!$stmt){
+        printf("Query Prep Failed: %s\n", $mysqli->error);
+        exit;
     }
-    
+    //$stmt->bind_param('ss', $user, $hashedpass);
+    $stmt->execute();
+    $stmt->close();
+?>
