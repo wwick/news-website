@@ -1,17 +1,47 @@
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>News</title>
-<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>News</title>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
-<table>
-<tr>
-<th>Title</th>
-<th>Author</th>
-</tr>  
+
+
+	<?php
+		session_start();
+		if (isset($_SESSION['user'])) {
+			echo "You are logged in as ".$user;
+		} else {
+			echo "
+			Create New User
+			<form action=\"login.php\" method=\"POST\">
+				Username: <input type=\"text\" name=\"user\"><br>
+				Password: <input type=\"password\" name=\"password\"><br>
+				<input type=\"submit\" value=\"Login\"><br>
+			</form>
+			<h1> New users must login again after making their account! </h1></br>
+			<a href=\"homepage.php\">Continue without logging in</a>
+			";
+		}
+
+	?>
+	<!-- <form action="login.php" method="POST">
+		Username: <input type="text" name="user"><br>
+		Password: <input type="password" name="password"><br>
+		Are you a new user? <input type="radio" name="new" value="1">Yes <input type="radio" name="new" value="0">No<br>
+		<input type="submit" value="Login"><br>
+	</form>
+	<h1> New users must login again after making their account! </h1></br>
+	<a href="homepage.php">Continue without logging in</a> -->
+
+
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+		</tr>  
 
 <?php
 
