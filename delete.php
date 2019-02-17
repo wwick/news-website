@@ -24,5 +24,28 @@ if(isset($_GET["c"])){
 	} else{
 		printf(nl2br("Don't try to delete comments that aren't yours\n<a href=\"story.php?id={$_GET['sid']}\"> Go back to story? </a>"));
 	}
+} else{
+	$stmt = $mysqli->prepare("select user_id from story where story_id=".$_GET["sid"]);
+	if(!$stmt){
+		printf("Query Prep Failed: %s\n", $mysqli->error);
+		exit;
+	}
+	$stmt->execute();
+	$stmt->bind_result($userID);
+	while($stmt->fetch()){
+		$id = $userID;
+	}
+	if($_SESSION["user"]==$id){
+		$stmt = $mysqli->prepare("delete from stories where story_id=".$_GET['sid']);
+		if(!$stmt){
+			printf("Query Prep Failed: %s\n", $mysqli->error);
+			exit;
+		}
+		$stmt->execute();
+		$stmt->close();
+		header("Location:homepage.php");
+	} else{
+		printf(nl2br("Don't try to delete stories that aren't yours\n<a href=\"homepage.php\"> Go back to homepage? </a>"));
+	}
 }
 ?>
