@@ -35,13 +35,16 @@ if ($taken) {
     $stmt->execute();
     $stmt->close();
 
-    $stmt = $mysqli->prepare("select user_id from users where user=".$user);
+    $stmt = $mysqli->prepare("select user_id from users where user=\"".$user."\"");
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
         exit;
     }
     $stmt->execute();
-    $stmt->bind_result($user_d);
+    $stmt->bind_result($id);
+    while ($stmt->fetch()) {
+        $user_id = $id;
+    }
     $stmt->close();
 
     session_start();

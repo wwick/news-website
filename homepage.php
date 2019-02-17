@@ -14,7 +14,7 @@
 		if (isset($_SESSION['user'])) {
 			require 'database.php';
 			$user_id=$_SESSION['user'];
-			$stmt = $mysqli->prepare("select user from users where user_id=".$user_id);
+			$stmt = $mysqli->prepare("select user from users where user_id=\"".$user_id."\"");
 			if(!$stmt){
 				header("Location:abort.php");
 			}
