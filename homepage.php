@@ -26,17 +26,21 @@
 			}
 			$stmt->close();
 			$mysqli->close();
+
 		} else {
+
 			echo "
-			Create New User
+			<p>Create New User</p>
 			<form action=\"login.php\" method=\"POST\">
 				Username: <input type=\"text\" name=\"user\"><br>
-				Password: <input type=\"password\" name=\"password\"><br>
-				<input type=\"submit\" value=\"Login\"><br>
+				Password: <input type=\"password\" name=\"password1\"><br>
+				Confirm Password: <input type=\"password\" name=\"password2\"><br>
+				<input type=\"submit\" value=\"Create new user\"><br>
 			</form>
 			<h1> New users must login again after making their account! </h1></br>
 			<a href=\"homepage.php\">Continue without logging in</a>
 			";
+
 		}
 
 	?>
@@ -67,11 +71,11 @@ if(!$stmt){
 
 $stmt->execute();
 
-$stmt->bind_result($tile, $author, $story_id);
+$stmt->bind_result($title, $author, $story_id);
 
 while($stmt->fetch()){
 	echo "<tr>\n";
-	printf("\t<td> <a href=\"story.php?id=$story_id\">%s</a></td>\n", htmlspecialchars($tile));
+	printf("\t<td> <a href=\"story.php?id=$story_id\">%s</a></td>\n", htmlspecialchars($title));
 	printf("\t<td>%s</td>\n", htmlspecialchars($author));
 	echo "</tr>\n";
 }
