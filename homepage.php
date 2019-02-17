@@ -90,10 +90,10 @@ echo "</tr>\n";
 $stmt->close();
 $mysqli->close();
 
-
 echo "</table>";
 if (isset($_SESSION['user'])) {
     echo "<a href=\"write.php\">Click here to write a story</a>";
+    echo "<a href=\"abort.php\">Click here to logout!</a>";
 }
 
 ?>
