@@ -84,11 +84,12 @@ while($stmt->fetch()){
 		echo "<tbody>";
 	}
 	echo "<tr>\n";
-	printf("\t<td> <a href=\"story.php?id=$story_id\">%s</a></td>\n", htmlspecialchars($title));
+	$story = $story_id;
+	printf("\t<td> <a href=\"story.php?id=$story\">%s</a></td>\n", htmlspecialchars($title));
 	printf("\t<td>%s</td>\n", htmlspecialchars($author));
 	if ($user_set) {
-		echo "\t<td> <a href=\"edit.php?id=$story_id\" class=\"button\">Edit</a></td>\n";
-		echo "\t<td> <a href=\"delete.php?id=$story_id\" class=\"button\">Delete</a></td>\n";
+		echo "\t<td> <a href=\"edit.php?id=$story\" class=\"button\">Edit</a></td>\n";
+		echo "\t<td> <a href=\"delete.php?id=$story\" class=\"button\">Delete</a></td>\n";
 	}
 	echo "</tr>\n";
 	$count = $count + 1;
