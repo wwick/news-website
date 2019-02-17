@@ -34,10 +34,10 @@ if ($stmt->fetch()){
 $stmt->close();
 
 // likes story if story is not already liked
-if (!($already_liked)) {
+if ($already_liked) {
 
 	// increments story liked count
-	$stmt = $mysqli->prepare("UPDATE stories SET likes=likes+1 WHERE story_id=".$story_id);
+	$stmt = $mysqli->prepare("UPDATE stories SET likes=likes-1 WHERE story_id=".$story_id);
 	if(!$stmt){
 		printf("Query Prep Failed: %s\n", $mysqli->error);
 		exit;
@@ -46,7 +46,17 @@ if (!($already_liked)) {
 	$stmt->close();
 
 	// add this story to the user's list of liked stories
-	$stmt = $mysqli->prepare("UPDATE users SET liked_stories=concat(liked_stories,\",\",".$story_id.",\",\") WHERE user_id=".$user_id);
+	$stmt = $mysqli->prepare("UPDATE users SET liked_stories=concat(liked_stories, \",\", ".$story_id.") WHERE user_id=".$user_id);
+	if(!$stmt){
+		printf("Query Prep Failed: %s\n", $mysqli->error);
+		exit;
+	}
+	$stmt->execute();
+	$stmt->close();
+
+	// removes story_id from list of user's liked stories
+	$search_string = ",".$story_id.",";
+	$stmt = $mysqli->prepare("UPDATE users SET liked_stories=REPLACE(liked_stories,\"".$search_string."\",\"\") WHERE user_id=".$user_id);
 	if(!$stmt){
 		printf("Query Prep Failed: %s\n", $mysqli->error);
 		exit;
