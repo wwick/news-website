@@ -26,8 +26,8 @@ $stmt->execute();
 $stmt->bind_result($title, $author, $story);
 
 while($stmt->fetch()){
-	printf("\t<p>%s</p>\n", htmlspecialchars($title));
-	printf("\t<p>%s<p>\n", htmlspecialchars($author));
+	printf("\t<h1>%s</h1>\n", htmlspecialchars($title));
+	printf("\t<p>By: %s<p>\n", htmlspecialchars($author));
 	printf("\t<p>%s</p>\n", htmlspecialchars($story));
 
 }
@@ -35,11 +35,11 @@ $stmt->close();
 $mysqli->close();
 
 ?>
-<h3>Comment here!</h3></br>
+<h3>Comment here!</h3><br>
 <form action="comment.php" method="post" id="comment">
 <input type="submit" value="Comment">
 </form>
-<textarea placeholder="Type your comment here!" name="comment" form="comment"></textarea></br>
+<textarea placeholder="Type your comment here!" name="comment" form="comment"></textarea><br>,
 <table>
 <thead>
 <tr>
