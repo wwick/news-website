@@ -93,8 +93,8 @@ $mysqli->close();
 ?>
 
 </table>
-<a href="write.php">Click here to write a story</a>
-
+<a href="write.php">Click here to write a story</a></br>
+<a href="abort.php">Click here to logout!</a>
 
 </body>
 </html>
