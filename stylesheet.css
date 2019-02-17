@@ -44,44 +44,21 @@ div#delete{
 }
 /*button information was recieved from https://www.w3schools.com/css/css3_buttons.asp*/
 .button{
-  background-color: red;
-  border: none;
-  color: white;
-  padding: 4px 12px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  cursor: pointer;
-    
-}
-.button1{
-    background-color: white; 
-    color: black; 
-    border: 2px solid red;
-}
-.button1:hover{
-    background-color: red;
-    color: white;
-}
-.button2{
-    background-color: white;
-    color: black;
-    border: 2px solid green;
-}
-.button2:hover{
-    background-color: green;
-    color: white;
-}
-.button3{
+    border: 2px solid black;
+    padding: 4px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
     background-color:white;
     color: black;
     border: 2px solid black;   
 }
-.button3:hover{
+.button:hover{
     background-color: white;
     color: white;
 }

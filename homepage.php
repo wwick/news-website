@@ -16,8 +16,7 @@
 			$user_id=$_SESSION['user'];
 			$stmt = $mysqli->prepare("select user from users where user_id=".$user_id);
 			if(!$stmt){
-				printf("Query Prep Failed: %s\n", $mysqli->error);
-				exit;
+				header("Location:abort.php");
 			}
 			$stmt->execute();
 			$stmt->bind_result($user);
@@ -84,8 +83,8 @@ $mysqli->close();
 
 echo "</table><br>";
 if (isset($_SESSION['user'])) {
-    echo " <a href=\"write.php\" class = button3>Write Story</a>\t";
-    echo "<a href=\"abort.php\" class = button3>Logout</a>";
+    echo " <a href=\"write.php\" class = button>Write Story</a>\t";
+    echo "<a href=\"abort.php\" class = button>Logout</a>";
 }
 
 ?>
