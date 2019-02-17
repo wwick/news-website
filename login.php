@@ -17,14 +17,10 @@ while($stmt->fetch()){
 	if($user === $tableUser){
 		if(password_verify($password, $tablePass)){
 			$_SESSION["user"] = $user_id;
-			header("Location:homepage.php");
-		} else{
-			echo "wrong password";
-			break;
 		}
-
 	}
 }
 $stmt->close();
+header("Location:homepage.php");
 
 ?>
