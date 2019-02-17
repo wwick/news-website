@@ -24,7 +24,7 @@ if(isset($_GET["c"])){
 			$editing = $comment;
 		}
                 $stmt->close();
-		printf("<form action=\"update.php?cid={$_GET['c']}\" id=\"form\" method=\"post\">
+		printf("<form action=\"update.php?cid={$_GET['c']}&sid={$_GET['sid']}\" id=\"form\" method=\"post\">
 			<input type=\"submit\" value=\"Update\">
 			</form>
 			<textarea form=\"form\" name=\"comment\">{$editing}</textarea>");

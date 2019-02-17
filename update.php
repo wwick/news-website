@@ -22,7 +22,7 @@ if(isset($_GET['cid'])){
 		$stmt->bind_param('s',$_POST['comment']);
 		$stmt->execute();
 		$stmt->close();
-		//header("Location:story.php?s={$_GET['sid']}");
+		header("Location:story.php?id={$_GET['sid']}");
 	}	
 }
 ?>
