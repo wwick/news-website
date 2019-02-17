@@ -31,10 +31,21 @@
 
 			echo "
 			<p>Create New User</p>
-			<form action=\"login.php\" method=\"POST\">
+			<form action=\"create.php\" method=\"POST\">
 				Username: <input type=\"text\" name=\"user\"><br>
 				Password: <input type=\"password\" name=\"password1\"><br>
 				Confirm Password: <input type=\"password\" name=\"password2\"><br>
+				<input type=\"submit\" value=\"Create new user\"><br>
+			</form>
+			<h1> New users must login again after making their account! </h1></br>
+			<a href=\"homepage.php\">Continue without logging in</a>
+			<br>";
+
+			echo "
+			<p>Login as Existing User</p>
+			<form action=\"login.php\" method=\"POST\">
+				Username: <input type=\"text\" name=\"user\"><br>
+				Password: <input type=\"password\" name=\"password\"><br>
 				<input type=\"submit\" value=\"Create new user\"><br>
 			</form>
 			<h1> New users must login again after making their account! </h1></br>
