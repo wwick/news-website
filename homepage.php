@@ -1,73 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>News</title>
-	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>News</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
-	<div id='main'>
+<div id='main'>
 
-	<?php
-		session_start();
-		$user_set = false;
-		if (isset($_SESSION['user'])) {
-			$user_set = true;
-			require 'database.php';
-			$user_id=$_SESSION['user'];
-			$stmt = $mysqli->prepare("select user from users where user_id=\"".$user_id."\"");
-			if(!$stmt){
-				header("Location:abort.php");
-			}
-			$stmt->execute();
-			$stmt->bind_result($user);
-			if($stmt->fetch()){
-				printf("<p>You are now logged in as user %s</p>", htmlspecialchars($user));
-			}
-			$stmt->close();
-			$mysqli->close();
+<?php
+session_start();
+$user_set = false;
+if (isset($_SESSION['user'])) {
+	$user_set = true;
+	require 'database.php';
+	$user_id=$_SESSION['user'];
+	$stmt = $mysqli->prepare("select user from users where user_id=\"".$user_id."\"");
+	if(!$stmt){
+		header("Location:abort.php");
+	}
+	$stmt->execute();
+	$stmt->bind_result($user);
+	if($stmt->fetch()){
+		printf("<p>You are now logged in as user %s</p>", htmlspecialchars($user));
+	}
+	$stmt->close();
+	$mysqli->close();
 
-		} else {
+} else {
 
-			echo "
-			<p>Create New User</p>
-			<form action=\"create.php\" method=\"POST\">
-				Username: <input type=\"text\" name=\"user\"><br>
-				Password: <input type=\"password\" name=\"password1\"><br>
-				Confirm Password: <input type=\"password\" name=\"password2\"><br>
-				<input type=\"submit\" value=\"Create new user\"><br>
-			</form>
-			<br>";
+	echo "
+		<p>Create New User</p>
+		<form action=\"create.php\" method=\"POST\">
+		Username: <input type=\"text\" name=\"user\"><br>
+		Password: <input type=\"password\" name=\"password1\"><br>
+		Confirm Password: <input type=\"password\" name=\"password2\"><br>
+		<input type=\"submit\" value=\"Create new user\"><br>
+		</form>
+		<br>";
 
-			echo "
-			<p>Login as Existing User</p>
-			<form action=\"login.php\" method=\"POST\">
-				Username: <input type=\"text\" name=\"user\"><br>
-				Password: <input type=\"password\" name=\"password\"><br>
-				<input type=\"submit\" value=\"Login\"><br>
-			</form>
-			<br>
-			";
+	echo "
+		<p>Login as Existing User</p>
+		<form action=\"login.php\" method=\"POST\">
+		Username: <input type=\"text\" name=\"user\"><br>
+		Password: <input type=\"password\" name=\"password\"><br>
+		<input type=\"submit\" value=\"Login\"><br>
+		</form>
+		<br>
+		";
 
-		}
+}
 
-	?>
-	<table>
-		<thead>
-		<tr>
-			<th>Title</th>
-			<th>Author</th>
-			<?php
-			if ($user_set) {
-				echo "<th>Edit</th>";
-				echo "<th>Delete</th>";
-			}
-			?>
-		</tr>  
-		</thead>
-		<tbody>
+?>
 <?php
 
 require 'database.php';
@@ -81,7 +67,22 @@ $stmt->execute();
 
 $stmt->bind_result($title, $author, $story_id);
 
+$count = 1;
 while($stmt->fetch()){
+	if ($count == 1){
+		echo "<table>";
+		echo "<thead>";
+		echo "<tr>";
+		echo "<th>Title</th>";
+		echo "<th>Author</th>";
+		if ($user_set) {
+			echo "<th>Edit</th>";
+			echo "<th>Delete</th>";
+		}
+		echo "</tr>";
+		echo "</thead>";
+		echo "<tbody>";
+	}
 	echo "<tr>\n";
 	printf("\t<td> <a href=\"story.php?id=$story_id\">%s</a></td>\n", htmlspecialchars($title));
 	printf("\t<td>%s</td>\n", htmlspecialchars($author));
@@ -90,15 +91,22 @@ while($stmt->fetch()){
 		echo "\t<td> <a href=\"delete.php?id=$story_id\" class=\"button\">Delete</a></td>\n";
 	}
 	echo "</tr>\n";
+	$count = $count + 1;
 }
-echo "</tbody>\n";
+if ($count != 1){
+	echo "</tbody>
+		</table>";
+}else{
+	echo "<h3>There are no stories to show. If you are a registered user, you can add a story for all users to view.</h3>";
+}
+
 $stmt->close();
 $mysqli->close();
 
 echo "</table><br>";
 if (isset($_SESSION['user'])) {
-    echo " <a href=\"write.php\" class=\"button\">Write Story</a>\t";
-    echo "<a href=\"abort.php\" class=\"button\">Logout</a>";
+	echo " <a href=\"write.php\" class=\"button\">Write Story</a>\t";
+	echo "<a href=\"abort.php\" class=\"button\">Logout</a>";
 }
 
 ?>
