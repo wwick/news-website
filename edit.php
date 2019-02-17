@@ -33,7 +33,7 @@ if(isset($_GET["c"])){
 		printf(nl2br("Don't try to edit comments that aren't yours\n<a href=\"story.php?id={$_GET['sid']}\"> Go back to story? </a>"));
 	}
 } else{
-	$stmt = $mysqli->prepare("select user_id from stories where story_id={$_GET['sid']}");
+	$stmt = $mysqli->prepare("select user_id from stories where story_id={$_GET['id']}");
 	if(!$stmt){
 		printf("Query Prep Failed: %s\n", $mysqli->error);
 		exit;
@@ -44,7 +44,7 @@ if(isset($_GET["c"])){
 		$id = $userID;
 	}
 	if($_SESSION["user"]==$id){
-		$stmt = $mysqli->prepare("select story from stories where story_id=".$_GET['sid']);
+		$stmt = $mysqli->prepare("select story from stories where story_id=".$_GET['id']);
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
 			exit;
