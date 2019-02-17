@@ -44,6 +44,7 @@ $mysqli->close();
 <tr>
 <th>Comments</th>
 <th>Users</th>
+<th>Edit</th>
 <th>Delete?</th>
 </tr>
 <?php
@@ -61,9 +62,11 @@ $stmt->bind_result($comment, $user, $id);
 
 while($stmt->fetch()){
 	echo "<tr>\n";
+	$commentID = $id;
 	printf("\t<td>%s</td>\n", htmlspecialchars($comment));
 	printf("\t<td>%s</td>\n", htmlspecialchars($user));
-	printf("\t<td><a href=\"delete.php?c=%s&sid={$_GET['id']}\"> Delete comment </a></td>\n", htmlspecialchars($id));
+	printf("\t<td><a href=\"edit.php?c=%s&sid={$_GET['id']}\"> Edit comment </a></td>\n", htmlspecialchars($commentID));
+	printf("\t<td><a href=\"delete.php?c=%s&sid={$_GET['id']}\"> Delete comment </a></td>\n", htmlspecialchars($commentID));
 	echo "</tr>\n";
 }
 echo "</tr>\n";
