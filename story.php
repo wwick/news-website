@@ -61,8 +61,8 @@ while($stmt->fetch()){
 		<table>
 		<thead>
 		<tr>
-			<th>Comments</th>
-			<th>Users</th>
+			<th>Comment</th>
+			<th>User</th>
 			";
 			if ($user_set) {
 				echo "<th>Edit</th>";
@@ -78,8 +78,10 @@ while($stmt->fetch()){
 	$comment_id = $id;
 	printf("\t<td>%s</td>\n", htmlspecialchars($comment));
 	printf("\t<td>%s</td>\n", htmlspecialchars($user));
-	printf("\t<td><a class=button href=\"edit.php?c=%s&sid={$_GET['id']}\">Edit</a></td>\n", htmlspecialchars($comment_id));
-	printf("\t<td><a class=button href=\"delete.php?c=%s&sid={$_GET['id']}\">Delete</a></td>\n", htmlspecialchars($comment_id));
+	if ($user_set) {
+	    printf("\t<td><a class=button href=\"edit.php?c=%s&sid={$_GET['id']}\">Edit</a></td>\n", htmlspecialchars($comment_id));
+	    printf("\t<td><a class=button href=\"delete.php?c=%s&sid={$_GET['id']}\">Delete</a></td>\n", htmlspecialchars($comment_id));
+	}
 	echo "</tr>\n";
 	$count = $count + 1;
 }
