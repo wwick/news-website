@@ -37,8 +37,6 @@
 				Confirm Password: <input type=\"password\" name=\"password2\"><br>
 				<input type=\"submit\" value=\"Create new user\"><br>
 			</form>
-			<h1> New users must login again after making their account! </h1></br>
-			<a href=\"homepage.php\">Continue without logging in</a>
 			<br>";
 
 			echo "
@@ -48,8 +46,6 @@
 				Password: <input type=\"password\" name=\"password\"><br>
 				<input type=\"submit\" value=\"Create new user\"><br>
 			</form>
-			<h1> New users must login again after making their account! </h1></br>
-			<a href=\"homepage.php\">Continue without logging in</a>
 			";
 
 		}
