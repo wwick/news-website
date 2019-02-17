@@ -46,8 +46,9 @@
 			<form action=\"login.php\" method=\"POST\">
 				Username: <input type=\"text\" name=\"user\"><br>
 				Password: <input type=\"password\" name=\"password\"><br>
-				<input type=\"submit\" value=\"Create new user\"><br>
+				<input type=\"submit\" value=\"Login\"><br>
 			</form>
+			<br>
 			";
 
 		}
