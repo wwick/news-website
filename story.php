@@ -44,11 +44,12 @@ $mysqli->close();
 <tr>
 <th>Comments</th>
 <th>Users</th>
+<th>Delete?</th>
 </tr>
 <?php
 require 'database.php';
 session_start();
-$stmt = $mysqli->prepare("select comment, users.user from comments join users on (comments.user_id=users.user_id) where story_id={$_SESSION['story']}");
+$stmt = $mysqli->prepare("select comment, users.user, comment_id from comments join users on (comments.user_id=users.user_id) where story_id={$_SESSION['story']}");
 if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
 	exit;
@@ -56,12 +57,13 @@ if(!$stmt){
 
 $stmt->execute();
 
-$stmt->bind_result($comment, $user);
+$stmt->bind_result($comment, $user, $id);
 
 while($stmt->fetch()){
 	echo "<tr>\n";
 	printf("\t<td>%s</td>\n", htmlspecialchars($comment));
 	printf("\t<td>%s</td>\n", htmlspecialchars($user));
+	printf("\t<td><a href=\"delete.php?c=%s\"> Delete comment </a></td>\n", htmlspecialchars($id));
 	echo "</tr>\n";
 }
 echo "</tr>\n";
