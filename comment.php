@@ -1,4 +1,5 @@
 <?php
+//Used to store comments in the the table comments
 require "database.php";
 session_start();
 $comment = $_POST["comment"];

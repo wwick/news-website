@@ -13,11 +13,11 @@
 <a href="homepage.php" class="button">Homepage</a><br>
 
 <?php
-
+//acquires all necessary data for the story
 require 'database.php';
 $story_id=$_REQUEST['id'];
 session_start();
-$_SESSION["story"] = $story_id;
+$_SESSION["story"] = $story_id;//each story has a unique link based on a get variable
 $stmt = $mysqli->prepare("select title, author, story, likes from stories where story_id=".$story_id);
 if(!$stmt){
 	header("Location:homepage.php");
@@ -39,21 +39,21 @@ if ($stmt->fetch()){
 $stmt->close();
 $mysqli->close();
 
-printf("\t<h3>%s likes</h3>\n", htmlspecialchars($likes));
+printf("\t<h3>%s likes</h3>\n", htmlspecialchars($likes));//shows likes
 
-if ($user_set) {
+if ($user_set) {//you can only like or dislike if you are registered
 	echo "
 	<a href=\"like.php\" class=\"button\">Like</a><br>
 	<a href=\"dislike.php\" class=\"button\">Dislike</a><br>
 	";
 }
 
-
+//displays story
 printf("\t<h1>%s</h1>\n", htmlspecialchars($title));
 printf("\t<h2>By: %s</h2>\n", htmlspecialchars($author));
 printf("\t<p>%s</p>\n", htmlspecialchars($story));
 
-
+//if you are logged in you can comment
 if ($user_set) {
 echo "
 <h3>Comment here!</h3><br>
@@ -66,6 +66,7 @@ echo "
 ";
 }
 require 'database.php';
+//displays table with comment information
 $stmt = $mysqli->prepare("select comment, users.user, comment_id from comments join users on (comments.user_id=users.user_id) where story_id={$_SESSION['story']}");
 if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -78,7 +79,7 @@ $stmt->bind_result($comment, $user, $id);
 
 $count = 1;
 
-while($stmt->fetch()){
+while($stmt->fetch()){//if there are no comments, let's you know
 	if ($count == 1) {
 		echo "
 		<table>
@@ -87,7 +88,7 @@ while($stmt->fetch()){
 			<th>Comment</th>
 			<th>User</th>
 			";
-			if ($user_set) {
+			if ($user_set) {//if you are not logged in, you can't edit or delete
 				echo "<th>Edit</th>";
 				echo "<th>Delete</th>";
 			}

@@ -1,7 +1,7 @@
 <?php
 require "database.php";
 session_start();
-if(isset($_GET['cid'])){
+if(isset($_GET['cid'])){//checks if you are updating a comment or story
 	$stmt = $mysqli->prepare("select user_id from comments where comment_id=".$_GET["cid"]);
 	if(!$stmt){
 		printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -12,7 +12,7 @@ if(isset($_GET['cid'])){
 	while($stmt->fetch()){
 		$id = $userID;
 	}
-	if($_SESSION["user"]==$id){
+	if($_SESSION["user"]==$id){//checks if you are that user who wrote it
 		$stmt = $mysqli->prepare('update comments set comment=? where comment_id='.$_GET['cid']);
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -22,8 +22,9 @@ if(isset($_GET['cid'])){
 		$stmt->execute();
 		$stmt->close();
 		header("Location:story.php?id={$_GET['sid']}");
+		//redirects you back to the comment you edited
 	}	
-} else{
+} else{//you updated a story
 	$stmt = $mysqli->prepare("select user_id from stories where story_id=".$_GET["sid"]);
 	if(!$stmt){
 		printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -35,7 +36,7 @@ if(isset($_GET['cid'])){
 	while($stmt->fetch()){
 		$id = $userID;
 	}
-	if($_SESSION["user"]==$id){
+	if($_SESSION["user"]==$id){//checks you are the user who wrote it
 		$stmt = $mysqli->prepare('update stories set story=? where story_id='.$_GET['sid']);
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -45,6 +46,7 @@ if(isset($_GET['cid'])){
 		$stmt->execute();
 		$stmt->close();
 		header("Location:story.php?id={$_GET['sid']}");
+		//redirects you to your story
 	}
 }
 ?>

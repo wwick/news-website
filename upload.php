@@ -1,4 +1,5 @@
 <?php
+//takes your story and inserts it into the database
 require "database.php";
 session_start();
 $user_id =  $_SESSION["user"];

@@ -7,6 +7,8 @@
 <div id='main'>
 
 <?php
+//checks to make sure you are logged in, if not redirected
+//to homepage. If you are, you can submite a story
 session_start();
 if(!isset($_SESSION["user"])){
 	header("Location:homepage.php");
