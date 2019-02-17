@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<div id='main'>
+
+
 <?php
 require "database.php";
 session_start();
@@ -8,9 +20,9 @@ if(isset($_GET["c"])){//checks if you are editing a comment or story
 		exit;
 	}
 	$stmt->execute();
-	$stmt->bind_result($userID);
+	$stmt->bind_result($user_id);
 	while($stmt->fetch()){
-		$id = $userID;
+		$id = $user_id;
 	}
 	if($_SESSION["user"]==$id){//you can only edit a comment that you wrote
 		$stmt = $mysqli->prepare("select comment from comments where comment_id=".$_GET['c']);
@@ -39,9 +51,9 @@ if(isset($_GET["c"])){//checks if you are editing a comment or story
 		exit;
 	}
 	$stmt->execute();
-	$stmt->bind_result($userID);
+	$stmt->bind_result($user_id);
 	while($stmt->fetch()){
-		$id = $userID;
+		$id = $user_id;
 	}
 	if($_SESSION["user"]==$id){//can't edit a story that isn't yours
 		$stmt = $mysqli->prepare("select story from stories where story_id=".$_GET['id']);
@@ -64,4 +76,8 @@ if(isset($_GET["c"])){//checks if you are editing a comment or story
 	}
 }
 ?>
+
+</div>
+</body>
+<html>
 
