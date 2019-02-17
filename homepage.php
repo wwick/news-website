@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
-
+	<div id='main'>
 
 	<?php
 		session_start();
@@ -51,15 +51,6 @@
 		}
 
 	?>
-	<!-- <form action="login.php" method="POST">
-		Username: <input type="text" name="user"><br>
-		Password: <input type="password" name="password"><br>
-		Are you a new user? <input type="radio" name="new" value="1">Yes <input type="radio" name="new" value="0">No<br>
-		<input type="submit" value="Login"><br>
-	</form>
-	<h1> New users must login again after making their account! </h1></br>
-	<a href="homepage.php">Continue without logging in</a> -->
-
 
 	<table>
 		<tr>
@@ -90,13 +81,15 @@ echo "</tr>\n";
 $stmt->close();
 $mysqli->close();
 
-echo "</table>";
+echo "</table><br>";
 if (isset($_SESSION['user'])) {
-    echo "<a href=\"write.php\">Click here to write a story</a>";
+    echo "<a href=\"write.php\">Click here to write a story</a><br>";
     echo "<a href=\"abort.php\">Click here to logout!</a>";
 }
 
 ?>
+
+</div>
 
 </body>
 </html>
