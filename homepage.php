@@ -55,6 +55,8 @@
 		<tr>
 			<th>Title</th>
 			<th>Author</th>
+			<th>Edit</th>
+			<th>Delete</th>
 		</tr>  
 		</thead>
 		<tbody>
@@ -75,6 +77,8 @@ while($stmt->fetch()){
 	echo "<tr>\n";
 	printf("\t<td> <a href=\"story.php?id=$story_id\">%s</a></td>\n", htmlspecialchars($title));
 	printf("\t<td>%s</td>\n", htmlspecialchars($author));
+	echo "\t<td> <a class = button href=\"edit.php?id=$story_id\">Edit</a></td>\n";
+	echo "\t<td> <a class = button href=\"delete.php?id=$story_id\">Delete</a></td>\n";
 	echo "</tr>\n";
 }
 echo "</tbody>\n";
