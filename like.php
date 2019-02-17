@@ -3,15 +3,11 @@
 require 'database.php';
 session_start();
 if (!(isset($_SESSION['story']))) {
-    //header("Location:homepage.php");
-    echo "story_id session variable not set";
-    exit;
+    header("Location:homepage.php");
 }
 $story_id = $_SESSION['story'];
 if (!(isset($_SESSION['user']))) {
-    //header("Location:story.php?=".$story_id);
-    echo "user_id session variable not set";
-    exit;
+    header("Location:story.php?=".$story_id);
 }
 $user_id = $_SESSION['user'];
 
@@ -36,9 +32,7 @@ if ($stmt->fetch()){
 $stmt->close();
 
 if ($already_liked) {
-   //header("Location:story.php?=".$story_id);
-   echo "already liked";
-	exit;
+   header("Location:story.php?=".$story_id);
 }
 
 echo "continued past already liked if statement";
@@ -61,7 +55,6 @@ $stmt->close();
 
 $mysqli->close();
 
-//header("Location:story.php?=".$story_id);
-echo "reached end";
+header("Location:story.php?=".$story_id);
 
 ?>
