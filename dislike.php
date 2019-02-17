@@ -28,7 +28,7 @@ $stmt->bind_result($liked_stories);
 // checks if user has already liked the story
 $already_liked = false;
 if ($stmt->fetch()){
-    $liked_array = explode(",", $liked_stories);
+    $liked_array = explode("_", $liked_stories);
     $already_liked = in_array((string)$story_id,$liked_array);
 }
 $stmt->close();
@@ -55,7 +55,7 @@ if ($already_liked) {
 	$stmt->close();
 
 	// removes story_id from list of user's liked stories
-	$search_string = ",".$story_id.",";
+	$search_string = "_".$story_id."_";
 	$stmt = $mysqli->prepare("UPDATE users SET liked_stories=REPLACE(liked_stories,\"".$search_string."\",\"\") WHERE user_id=".$user_id);
 	if(!$stmt){
 		printf("Query Prep Failed: %s\n", $mysqli->error);

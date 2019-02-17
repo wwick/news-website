@@ -28,7 +28,7 @@ $stmt->bind_result($liked_stories);
 // checks if user has already liked the story
 $already_liked = false;
 if ($stmt->fetch()){
-    $liked_array = explode(",", $liked_stories);
+    $liked_array = explode("_", $liked_stories);
     $already_liked = in_array((string)$story_id,$liked_array);
 }
 $stmt->close();
@@ -44,16 +44,15 @@ if (!($already_liked)) {
 	}
 	$stmt->execute();
 	$stmt->close();
-
 	// add this story to the user's list of liked stories
-	$stmt = $mysqli->prepare("UPDATE users SET liked_stories=concat(liked_stories,\",\",".$story_id.",\",\") WHERE user_id=".$user_id);
+	$concat_string = "_".$story_id."_";
+	$stmt = $mysqli->prepare("UPDATE users SET liked_stories=concat(liked_stories, \"".$concat_string."\") WHERE user_id=".$user_id);
 	if(!$stmt){
 		printf("Query Prep Failed: %s\n", $mysqli->error);
 		exit;
 	}
 	$stmt->execute();
 	$stmt->close();
-	
 }
 
 // logs out of MySQL and returns to story
