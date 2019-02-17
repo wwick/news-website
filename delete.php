@@ -20,9 +20,9 @@ if(isset($_GET["c"])){
 		}
 		$stmt->execute();
 		$stmt->close();
-
+		header("Location:story.php?id=".$_GET["sid"]);
 	} else{
-		echo "Don't try to delete comments that aren't yours";
+		printf(nl2br("Don't try to delete comments that aren't yours\n<a href=\"story.php?id={$_GET['sid']}\"> Go back to story? </a>"));
 	}
 }
 ?>

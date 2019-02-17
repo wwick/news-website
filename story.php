@@ -63,7 +63,7 @@ while($stmt->fetch()){
 	echo "<tr>\n";
 	printf("\t<td>%s</td>\n", htmlspecialchars($comment));
 	printf("\t<td>%s</td>\n", htmlspecialchars($user));
-	printf("\t<td><a href=\"delete.php?c=%s\"> Delete comment </a></td>\n", htmlspecialchars($id));
+	printf("\t<td><a href=\"delete.php?c=%s&sid={$_GET['id']}\"> Delete comment </a></td>\n", htmlspecialchars($id));
 	echo "</tr>\n";
 }
 echo "</tr>\n";
