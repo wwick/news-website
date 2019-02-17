@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,6 +9,8 @@
 
 </head>
 <body>
+
+<a href="homepage.php" class="button">Homepage</a><br>
 
 <?php
 
@@ -28,20 +30,23 @@ $stmt->bind_result($title, $author, $story);
 
 while($stmt->fetch()){
 	printf("\t<h1>%s</h1>\n", htmlspecialchars($title));
-	printf("\t<p>By: %s<p>\n", htmlspecialchars($author));
+	printf("\t<h2>By: %s</h2>\n", htmlspecialchars($author));
 	printf("\t<p>%s</p>\n", htmlspecialchars($story));
 }
 $stmt->close();
 $mysqli->close();
 
-?>
+if ($user_set) {
+echo "
 <h3>Comment here!</h3><br>
-<form action="comment.php" method="post" id="comment">
-<input type="submit" value="Comment">
-</form>
-<textarea placeholder="Type your comment here!" name="comment" form="comment"></textarea><br><br>,
 
-<?php
+<textarea placeholder=\"Type your comment here!\" name=\"comment\" form=\"comment\"></textarea><br>
+</form>
+<form action=\"comment.php\" method=\"post\" id=\"comment\">
+<input type=\"submit\" value=\"Comment\">
+</form><br>
+";
+}
 require 'database.php';
 $stmt = $mysqli->prepare("select comment, users.user, comment_id from comments join users on (comments.user_id=users.user_id) where story_id={$_SESSION['story']}");
 if(!$stmt){
@@ -91,6 +96,8 @@ if ($count != 1) {
 	<tbody>
 	</table>
 	";
+} else {
+	echo "<h3>There are no comments to show. If you are a registered user, you can add a comment for all users to view.</h3>";
 }
 
 $stmt->close();
