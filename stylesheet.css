@@ -89,6 +89,11 @@ div#delete{
     height: 500px;
     position: relative;
 }
+
+a {
+   text-decoration: none;
+}
+
 body{
     width: 500px; /* how wide to make your web page */
     margin: 0 auto;
