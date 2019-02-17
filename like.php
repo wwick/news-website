@@ -31,27 +31,25 @@ if ($stmt->fetch()){
 
 $stmt->close();
 
-if ($already_liked) {
-   //header("Location:story.php?id=".$story_id);
-   echo "already liked";
-   exit;
-}
+if (!($already_liked)) {
 
-$stmt = $mysqli->prepare("UPDATE stories SET likes=likes+1 WHERE story_id=".$story_id);
-if(!$stmt){
-	printf("Query Prep Failed: %s\n", $mysqli->error);
-	exit;
-}
-$stmt->execute();
-$stmt->close();
+	$stmt = $mysqli->prepare("UPDATE stories SET likes=likes+1 WHERE story_id=".$story_id);
+	if(!$stmt){
+		printf("Query Prep Failed: %s\n", $mysqli->error);
+		exit;
+	}
+	$stmt->execute();
+	$stmt->close();
 
-$stmt = $mysqli->prepare("UPDATE users SET liked_stories=concat(liked_stories, \",\", ".$story_id.") WHERE user_id=".$user_id);
-if(!$stmt){
-	printf("Query Prep Failed: %s\n", $mysqli->error);
-	exit;
+	$stmt = $mysqli->prepare("UPDATE users SET liked_stories=concat(liked_stories, \",\", ".$story_id.") WHERE user_id=".$user_id);
+	if(!$stmt){
+		printf("Query Prep Failed: %s\n", $mysqli->error);
+		exit;
+	}
+	$stmt->execute();
+	$stmt->close();
+	
 }
-$stmt->execute();
-$stmt->close();
 
 $mysqli->close();
 
