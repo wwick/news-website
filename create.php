@@ -5,7 +5,9 @@ $user = $_POST["user"];
 $password1 = $_POST["password1"];
 $password2 = $_POST["password2"];
 if ($password1 != $password2) {
-    header("Location:homepage.php");
+    // header("Location:homepage.php");
+    echo "passwords don't match";
+    exit;
 }
 $password = $password1;
 $hashedPass = password_hash($password, PASSWORD_DEFAULT);
@@ -36,6 +38,7 @@ if ($taken) {
     $stmt->close();
     session_start();
     $_SESSION['user'] = $user;
+    echo "user has been set as ".$user;
     header("Location:homepage.php");
 }
 

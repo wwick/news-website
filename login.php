@@ -8,8 +8,7 @@ $hashedPass = password_hash($password, PASSWORD_DEFAULT);
 
 $stmt = $mysqli->prepare("select user_id, user, password from users");
 if(!$stmt){
-	printf("Query Prep Failed: %s\n", $mysqli->error);
-	exit;
+	header("Location:homepage.php");
 }
 $stmt->execute();
 $stmt->bind_result($user_id, $tableUser, $tablePass);
