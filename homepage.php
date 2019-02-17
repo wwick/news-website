@@ -12,7 +12,20 @@
 	<?php
 		session_start();
 		if (isset($_SESSION['user'])) {
-			echo "You are logged in as ".$_SESSION['user'];
+			require 'database.php';
+			$user_id=$_SESSION['user'];
+			$stmt = $mysqli->prepare("select user from users where user_id=".$user_id);
+			if(!$stmt){
+				printf("Query Prep Failed: %s\n", $mysqli->error);
+				exit;
+			}
+			$stmt->execute();
+			$stmt->bind_result($user);
+			if($stmt->fetch()){
+				printf("<p>You are now logged in as user %s</p>", htmlspecialchars($user));
+			}
+			$stmt->close();
+			$mysqli->close();
 		} else {
 			echo "
 			Create New User
