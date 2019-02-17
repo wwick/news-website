@@ -51,13 +51,14 @@
 		}
 
 	?>
-
 	<table>
+		<thead>
 		<tr>
 			<th>Title</th>
 			<th>Author</th>
 		</tr>  
-
+		</thead>
+		<tbody>
 <?php
 
 require 'database.php';
@@ -77,7 +78,7 @@ while($stmt->fetch()){
 	printf("\t<td>%s</td>\n", htmlspecialchars($author));
 	echo "</tr>\n";
 }
-echo "</tr>\n";
+echo "</tbody>\n";
 $stmt->close();
 $mysqli->close();
 

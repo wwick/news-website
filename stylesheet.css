@@ -94,6 +94,12 @@ a {
    text-decoration: none;
 }
 
+textarea {
+    resize: none;
+    height: 150px;
+    width: 400px;
+}
+
 body{
     width: 500px; /* how wide to make your web page */
     margin: 0 auto;
