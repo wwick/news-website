@@ -24,13 +24,13 @@ if(isset($_GET["c"])){
 			$editing = $comment;
 		}
                 $stmt->close();
-		printf("<form action=\"update.php\" id=\"form\" method=\"post\">
+		printf("<form action=\"update.php?cid={$_GET['c']}\" id=\"form\" method=\"post\">
 			<input type=\"submit\" value=\"Update\">
 			</form>
-			<textarea form=\"form\">{$editing}</textarea>");
+			<textarea form=\"form\" name=\"comment\">{$editing}</textarea>");
                 //header("Location:story.php?id=".$_GET["sid"]);
         } else{
-                printf(nl2br("Don't try to delete comments that aren't yours\n<a href=\"story.php?id={$_GET['sid']}\"> Go back to story? </a>"));
+                printf(nl2br("Don't try to edit comments that aren't yours\n<a href=\"story.php?id={$_GET['sid']}\"> Go back to story? </a>"));
         }
 }
 ?>
