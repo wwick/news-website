@@ -83,8 +83,8 @@ $mysqli->close();
 
 echo "</table><br>";
 if (isset($_SESSION['user'])) {
-    echo "<a href=\"write.php\">Click here to write a story</a><br>";
-    echo "<a href=\"abort.php\">Click here to logout!</a>";
+    echo "<a href=\"write.php\" class = button button3>Write Story</a> ";
+    echo "<a href=\"abort.php\" class = button button3>Logout!</a>";
 }
 
 ?>
