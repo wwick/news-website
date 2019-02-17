@@ -18,7 +18,7 @@ require 'database.php';
 $story_id=$_REQUEST['id'];
 session_start();
 $_SESSION["story"] = $story_id;
-$stmt = $mysqli->prepare("select title, author, story from stories where story_id=".$story_id);
+$stmt = $mysqli->prepare("select title, author, story, likes from stories where story_id=".$story_id);
 if(!$stmt){
 	header("Location:homepage.php");
 }
@@ -26,15 +26,33 @@ $user_set = isset($_SESSION['user']);
 
 $stmt->execute();
 
-$stmt->bind_result($title, $author, $story);
+$stmt->bind_result($title, $author, $story, $likes);
 
-while($stmt->fetch()){
-	printf("\t<h1>%s</h1>\n", htmlspecialchars($title));
-	printf("\t<h2>By: %s</h2>\n", htmlspecialchars($author));
-	printf("\t<p>%s</p>\n", htmlspecialchars($story));
+
+if ($stmt->fetch()){
+	$title = $title;
+	$author = $author;
+	$story = $story;
+	$likes = $likes;
 }
+
 $stmt->close();
 $mysqli->close();
+
+printf("\t<h3>%s likes</h3>\n", htmlspecialchars($likes));
+
+if ($user_set) {
+	echo "
+	<a href=\"like.php\" class=\"button\">Like</a><br>
+	<a href=\"dislike.php\" class=\"button\">Dislike</a><br>
+	";
+}
+
+
+printf("\t<h1>%s</h1>\n", htmlspecialchars($title));
+printf("\t<h2>By: %s</h2>\n", htmlspecialchars($author));
+printf("\t<p>%s</p>\n", htmlspecialchars($story));
+
 
 if ($user_set) {
 echo "
