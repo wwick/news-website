@@ -36,6 +36,13 @@ if(isset($_GET["c"])){
 		$id = $userID;
 	}
 	if($_SESSION["user"]==$id){
+		$stmt = $mysqli->prepare("set foreign_key_checks=0");
+		if(!$stmt){
+			printf("Query Prep Failed: %s\n", $mysqli->error);
+			exit;
+		}
+		$stmt->execute();
+		$stmt->close();
 		$stmt = $mysqli->prepare("delete from stories where story_id=".$_GET['id']);
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -43,6 +50,14 @@ if(isset($_GET["c"])){
 		}
 		$stmt->execute();
 		$stmt->close();
+		$stmt = $mysqli->prepare("set foreign_key_checks=1");
+                if(!$stmt){
+                        printf("Query Prep Failed: %s\n", $mysqli->error);
+                        exit;
+                }
+                $stmt->execute();
+                $stmt->close();
+
 		header("Location:homepage.php");
 	} else{
 		printf(nl2br("Don't try to delete stories that aren't yours\n<a href=\"homepage.php\"> Go back to homepage? </a>"));
