@@ -77,8 +77,8 @@ while($stmt->fetch()){
 	echo "<tr>\n";
 	printf("\t<td> <a href=\"story.php?id=$story_id\">%s</a></td>\n", htmlspecialchars($title));
 	printf("\t<td>%s</td>\n", htmlspecialchars($author));
-	echo "\t<td> <a class = button href=\"edit.php?id=$story_id\">Edit</a></td>\n";
-	echo "\t<td> <a class = button href=\"delete.php?id=$story_id\">Delete</a></td>\n";
+	echo "\t<td> <a href=\"edit.php?id=$story_id\" class=\"button\">Edit</a></td>\n";
+	echo "\t<td> <a href=\"delete.php?id=$story_id\" class=\"button\">Delete</a></td>\n";
 	echo "</tr>\n";
 }
 echo "</tbody>\n";
@@ -87,8 +87,8 @@ $mysqli->close();
 
 echo "</table><br>";
 if (isset($_SESSION['user'])) {
-    echo " <a href=\"write.php\" class = button>Write Story</a>\t";
-    echo "<a href=\"abort.php\" class = button>Logout</a>";
+    echo " <a href=\"write.php\" class=\"button\">Write Story</a>\t";
+    echo "<a href=\"abort.php\" class=\"button\">Logout</a>";
 }
 
 ?>
