@@ -52,7 +52,6 @@ $mysqli->close();
 </tbody>
 <?php
 require 'database.php';
-session_start();
 $stmt = $mysqli->prepare("select comment, users.user, comment_id from comments join users on (comments.user_id=users.user_id) where story_id={$_SESSION['story']}");
 if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
