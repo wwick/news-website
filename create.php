@@ -5,9 +5,7 @@ $user = $_POST["user"];
 $password1 = $_POST["password1"];
 $password2 = $_POST["password2"];
 if ($password1 != $password2) {
-    // header("Location:homepage.php");
-    echo "passwords don't match";
-    exit;
+    header("Location:homepage.php");
 }
 $password = $password1;
 $hashedPass = password_hash($password, PASSWORD_DEFAULT);
@@ -36,9 +34,18 @@ if ($taken) {
     }
     $stmt->execute();
     $stmt->close();
+
+    $stmt = $mysqli->prepare("select user_id from users where user=".$user);
+    if(!$stmt){
+        printf("Query Prep Failed: %s\n", $mysqli->error);
+        exit;
+    }
+    $stmt->execute();
+    $stmt->bind_result($user_d);
+    $stmt->close();
+
     session_start();
-    $_SESSION['user'] = $user;
-    echo "user has been set as ".$user;
+    $_SESSION['user'] = $user_id;
     header("Location:homepage.php");
 }
 
