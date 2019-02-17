@@ -7,7 +7,7 @@ if (!(isset($_SESSION['story'])))  {
 	header("Location:homepage.php");
 }
 if (!(isset($_SESSION['user'])))  {
-	header("Location:story.php");
+	header("Location:story.php?id=".$_SESSION['story']);
 }
 
 $user = $_SESSION["user"];
@@ -20,5 +20,5 @@ if(!$stmt){
 $stmt->bind_param('iis', $story_id, $user, $comment);
 $stmt->execute();
 $stmt->close();
-header("Location=story.php?id=".$story_id);
+header("Location:story.php?id={$story_id}");
 ?>
