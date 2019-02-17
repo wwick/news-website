@@ -7,7 +7,7 @@ if (!(isset($_SESSION['story']))) {
 }
 $story_id = $_SESSION['story'];
 if (!(isset($_SESSION['user']))) {
-    header("Location:story.php?=".$story_id);
+    header("Location:story.php?id=".$story_id);
 }
 $user_id = $_SESSION['user'];
 
@@ -32,10 +32,10 @@ if ($stmt->fetch()){
 $stmt->close();
 
 if ($already_liked) {
-   header("Location:story.php?=".$story_id);
+   //header("Location:story.php?id=".$story_id);
+   echo "already liked";
+   exit;
 }
-
-echo "continued past already liked if statement";
 
 $stmt = $mysqli->prepare("UPDATE stories SET likes=likes+1 WHERE story_id=".$story_id);
 if(!$stmt){
@@ -55,6 +55,6 @@ $stmt->close();
 
 $mysqli->close();
 
-header("Location:story.php?=".$story_id);
+header("Location:story.php?id=".$story_id);
 
 ?>
