@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
-	<div id='main'><div class='center'><div class='container'>
+	<div id='main'>
 
 	<?php
 		session_start();
@@ -89,7 +89,7 @@ if (isset($_SESSION['user'])) {
 
 ?>
 
-</div></div></div>
+</div>
 
 </body>
 </html>

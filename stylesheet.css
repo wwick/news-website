@@ -31,6 +31,7 @@ div#main{
     right: 0;
     z-index: -1;
     display: block;
+    font-weight: bold;
     background-size: cover;
     background-image: linear-gradient(magenta, orange);
     height: 100%;
@@ -95,11 +96,7 @@ body{
     font:12px/16px Helvetica, Arial, sans-serif; /* default font */
 }
 /* learned how to center here https://www.w3schools.com/css/css_align.asp */
-.center {
-  margin: 0;
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+.offset {
+  transform: translate(50px);
+
 }
