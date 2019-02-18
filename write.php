@@ -23,7 +23,7 @@ if(!isset($_SESSION["user"])){
 <form action="upload.php" id="story" method="post">
     Author: <input type="text" name="author" required><br>
     Title: <input type="text" name="title" required><br>
-<input type="submit" value="Submit story"> 
+<input type="submit" value="Submit story" class="button"> 
 <!-- Form to enter story -->
 </form>
     <textarea name="story" form="story" placeholder="Enter your story here" required></textarea>

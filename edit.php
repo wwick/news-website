@@ -38,7 +38,7 @@ if(isset($_GET["c"])){//checks if you are editing a comment or story
 		}
 		$stmt->close();
 		printf("<form action=\"update.php?cid={$_GET['c']}&sid={$_GET['sid']}\" id=\"form\" method=\"post\">
-				<input type=\"submit\" value=\"Update\">
+				<input type=\"submit\" value=\"Update\" class=\"button\">
 				</form>
 				<textarea form=\"form\" name=\"comment\">{$editing}</textarea>");
 		//your previous comment is in the text box for you to manipulate
@@ -69,7 +69,7 @@ if(isset($_GET["c"])){//checks if you are editing a comment or story
 		}
 		$stmt->close();//form is auto filled with the text from your previous story
 		printf("<form action=\"update.php?sid={$_GET['id']}\" id=\"form\" method=\"post\">
-				<input type=\"submit\" value=\"Update\">
+				<input type=\"submit\" value=\"Update\" class=\"button\">
 				</form>
 				<textarea form=\"form\" name=\"story\">{$editing}</textarea>");
 	} else{

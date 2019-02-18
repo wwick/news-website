@@ -33,21 +33,19 @@ if (isset($_SESSION['user'])) {//displays a welcome message if you are logged in
 } else {//if you are not logged in, creates forms to log in or create a new user
 
 	echo "
-		<p>Create New User</p>
 		<form action=\"create.php\" method=\"POST\">
 		Username: <input type=\"text\" name=\"user\"><br>
 		Password: <input type=\"password\" name=\"password1\"><br>
 		Confirm Password: <input type=\"password\" name=\"password2\"><br>
-		<input type=\"submit\" value=\"Create new user\"><br>
+		<input class=\"button\" type=\"submit\" value=\"Create new user\"><br>
 		</form>
-		<br>";
+		<br><br>";
 
 	echo "
-		<p>Login as Existing User</p>
 		<form action=\"login.php\" method=\"POST\">
 		Username: <input type=\"text\" name=\"user\"><br>
 		Password: <input type=\"password\" name=\"password\"><br>
-		<input type=\"submit\" value=\"Login\"><br>
+		<input class=\"button\" type=\"submit\" value=\"Login\"><br>
 		</form>
 		<br>
 		";

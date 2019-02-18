@@ -66,7 +66,7 @@ echo "
 <textarea placeholder=\"Type your comment here!\" name=\"comment\" form=\"comment\"></textarea><br>
 </form>
 <form action=\"comment.php\" method=\"post\" id=\"comment\">
-<input type=\"submit\" value=\"Comment\">
+<input class=\"button\" type=\"submit\" value=\"Comment\">
 </form><br>
 ";
 }
