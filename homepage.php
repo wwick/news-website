@@ -58,7 +58,7 @@ if (isset($_SESSION['user'])) {//displays a welcome message if you are logged in
 <?php
 //displays all stories in a neat table 
 require 'database.php';
-$stmt = $mysqli->prepare("select title, author, story_id from stories");
+$stmt = $mysqli->prepare("select title, author, story_id, user_id from stories");
 if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
 	exit;
@@ -66,7 +66,7 @@ if(!$stmt){
 
 $stmt->execute();
 
-$stmt->bind_result($title, $author, $story_id);
+$stmt->bind_result($title, $author, $story_id, $story_user_id);
 
 $count = 1;
 while($stmt->fetch()){
@@ -76,7 +76,7 @@ while($stmt->fetch()){
 		echo "<tr>";
 		echo "<th>Title</th>";
 		echo "<th>Author</th>";
-		if ($user_set) {
+		if ($story_user_id == $user_id) {
 			echo "<th>Edit</th>";
 			echo "<th>Delete</th>";
 		}
@@ -88,6 +88,7 @@ while($stmt->fetch()){
 	$story = $story_id;
 	printf("\t<td> <a href=\"story.php?id=$story\">%s</a></td>\n", htmlspecialchars($title));
 	printf("\t<td>%s</td>\n", htmlspecialchars($author));
+	
 	if ($user_set) {//if you are not logged in, you won't be given the option to edit or delete
 		echo "\t<td> <a href=\"edit.php?id=$story\" class=\"button\">Edit</a></td>\n";
 		echo "\t<td> <a href=\"delete.php?id=$story\" class=\"button\">Delete</a></td>\n";

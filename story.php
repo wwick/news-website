@@ -22,7 +22,12 @@ $stmt = $mysqli->prepare("select title, author, story, likes from stories where 
 if(!$stmt){
 	header("Location:homepage.php");
 }
-$user_set = isset($_SESSION['user']);
+$user_set = false;
+
+if (isset($_SESSION['user'])) {
+	$user_id = $_SESSION['user'];
+	$user_set = true;
+}
 
 $stmt->execute();
 
@@ -67,7 +72,7 @@ echo "
 }
 require 'database.php';
 //displays table with comment information
-$stmt = $mysqli->prepare("select comment, users.user, comment_id from comments join users on (comments.user_id=users.user_id) where story_id={$_SESSION['story']}");
+$stmt = $mysqli->prepare("select comment, users.user, comment_id, users.user_id from comments join users on (comments.user_id=users.user_id) where story_id={$_SESSION['story']}");
 if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
 	exit;
@@ -75,7 +80,7 @@ if(!$stmt){
 
 $stmt->execute();
 
-$stmt->bind_result($comment, $user, $id);
+$stmt->bind_result($comment, $user, $id, $comment_user_id);
 
 $count = 1;
 
@@ -102,7 +107,7 @@ while($stmt->fetch()){//if there are no comments, let's you know
 	$comment_id = $id;
 	printf("\t<td>%s</td>\n", htmlspecialchars($comment));
 	printf("\t<td>%s</td>\n", htmlspecialchars($user));
-	if ($user_set) {
+	if ($comment_user_id == $user_id) {
 	    printf("\t<td><a class=button href=\"edit.php?c=%s&sid={$_GET['id']}\">Edit</a></td>\n", htmlspecialchars($comment_id));
 	    printf("\t<td><a class=button href=\"delete.php?c=%s&sid={$_GET['id']}\">Delete</a></td>\n", htmlspecialchars($comment_id));
 	}
