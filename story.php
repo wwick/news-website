@@ -95,7 +95,7 @@ while($stmt->fetch()){//if there are no comments, let's you know
 		echo "
 		</tr>
 		</thead>
-		</tbody>
+		<tbody>
 		";
 	}
 	echo "<tr>\n";
@@ -112,7 +112,7 @@ while($stmt->fetch()){//if there are no comments, let's you know
 
 if ($count != 1) {
 	echo "
-	<tbody>
+	</tbody>
 	</table>
 	";
 } else {

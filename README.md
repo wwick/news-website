@@ -1,29 +1,33 @@
-# README #
+# News Website (Module 3)
+--------------------
+The website to get all of your news. Stories written by your peers, no censorship.
+## Links
+---
+Elijah Pena's AWS - http://ec2-52-15-187-19.us-east-2.compute.amazonaws.com/~elijahpena/spring2019-module3-group-455281-467000/homepage.php
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Will Wick's AWS - http://ec2-52-14-191-6.us-east-2.compute.amazonaws.com/~wwick/git/spring2019-module3-group-455281-467000/homepage.php
 
-### What is this repository for? ###
+## Features!
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+  - Registered users can write, edit, or delete their own articles
+  - Wish to submit anonymously? The author of an article can differ from your user name
+  - Love an article? Drop a like. Change your mind? Take it back.
 
-### How do I get set up? ###
+### How to use
+1. Goto the link above.
+2. Register or log in as an existing user
+3. Click on the title of a story or write your own
+4. Scroll to the bottom of an article to write or read comments
+5. Leave a like at the top of the article
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Built with
+ - Server hosted by Amazon
+ - Website written with HTML, PHP
+ - Styled using CSS
+ - Datatables stored using mysql
 
-### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
 
-### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+
+

@@ -80,5 +80,5 @@ if(isset($_GET["c"])){//checks if you are editing a comment or story
 
 </div>
 </body>
-<html>
+</html>
 

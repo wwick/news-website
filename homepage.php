@@ -105,7 +105,7 @@ if ($count != 1){
 $stmt->close();
 $mysqli->close();
 
-echo "</table><br>";
+echo "<br>";
 if (isset($_SESSION['user'])) {//click these to logout  or write an article
 	echo " <a href=\"write.php\" class=\"button\">Write Story</a>\t";
 	echo "<a href=\"abort.php\" class=\"button\">Logout</a>";
