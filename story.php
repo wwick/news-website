@@ -67,7 +67,7 @@ if ($user_set) {
 echo "
 <br><h3>Comment here!</h3>
 
-<textarea placeholder=\"Type your comment here!\" name=\"comment\" form=\"comment\"></textarea><br>
+<textarea placeholder=\"Type your comment here!\" name=\"comment\" form=\"comment\" required></textarea><br>
 <form action=\"comment.php\" method=\"post\" id=\"comment\">
 <input class=\"button\" type=\"submit\" value=\"Comment\">
 </form><br>
