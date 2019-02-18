@@ -46,8 +46,8 @@ $mysqli->close();
 
 //displays story title
 printf("\t<h1>%s</h1>\n", htmlspecialchars($title));
-printf("\t<h2>By: %s</h2>\n", htmlspecialchars($author));
-printf("\t<h3>%s likes</h3>\n", htmlspecialchars($author));
+printf("\t<h3>By: %s</h3>\n", htmlspecialchars($author));
+printf("\t<h3>%s likes</h3>\n", htmlspecialchars($likes));
 
 // creates button to return to homepage
 echo "<a href=\"homepage.php\" class=\"button\">Homepage</a>";
@@ -55,7 +55,7 @@ echo "<a href=\"homepage.php\" class=\"button\">Homepage</a>";
 if ($user_set) {//you can only like or dislike if you are registered
 	echo "
 	<a href=\"like.php\" class=\"button\">Like</a>
-	<a href=\"dislike.php\" class=\"button\">Dislike</a><br>
+        <a href=\"dislike.php\" class=\"button\">Dislike</a><br><br>
 	";
 }
 
@@ -65,7 +65,7 @@ printf("\t<p>%s</p>\n", nl2br(htmlspecialchars($story)));
 //if you are logged in you can comment
 if ($user_set) {
 echo "
-<h3>Comment here!</h3><br>
+<br><h3>Comment here!</h3>
 
 <textarea placeholder=\"Type your comment here!\" name=\"comment\" form=\"comment\"></textarea><br>
 </form>
