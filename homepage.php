@@ -76,7 +76,7 @@ while($stmt->fetch()){
 		echo "<tr>";
 		echo "<th>Title</th>";
 		echo "<th>Author</th>";
-		if ($story_user_id == $user_id) {
+		if ($user_set) {
 			echo "<th>Edit</th>";
 			echo "<th>Delete</th>";
 		}
@@ -89,10 +89,17 @@ while($stmt->fetch()){
 	printf("\t<td> <a href=\"story.php?id=$story\">%s</a></td>\n", htmlspecialchars($title));
 	printf("\t<td>%s</td>\n", htmlspecialchars($author));
 	
-	if ($user_set) {//if you are not logged in, you won't be given the option to edit or delete
-		echo "\t<td> <a href=\"edit.php?id=$story\" class=\"button\">Edit</a></td>\n";
-		echo "\t<td> <a href=\"delete.php?id=$story\" class=\"button\">Delete</a></td>\n";
+	if ($user_set) {
+		if ($user_id == $story_user_id) {
+			//if you are not logged in, you won't be given the option to edit or delete
+			echo "\t<td> <a href=\"edit.php?id=$story\" class=\"button\">Edit</a></td>\n";
+			echo "\t<td> <a href=\"delete.php?id=$story\" class=\"button\">Delete</a></td>\n";
+		} else {
+			echo "<td></td>";
+			echo "<td></td>";
+		}
 	}
+
 	echo "</tr>\n";
 	$count = $count + 1;
 }

@@ -107,9 +107,14 @@ while($stmt->fetch()){//if there are no comments, let's you know
 	$comment_id = $id;
 	printf("\t<td>%s</td>\n", htmlspecialchars($comment));
 	printf("\t<td>%s</td>\n", htmlspecialchars($user));
-	if ($comment_user_id == $user_id) {
-	    printf("\t<td><a class=button href=\"edit.php?c=%s&sid={$_GET['id']}\">Edit</a></td>\n", htmlspecialchars($comment_id));
-	    printf("\t<td><a class=button href=\"delete.php?c=%s&sid={$_GET['id']}\">Delete</a></td>\n", htmlspecialchars($comment_id));
+	if ($user_set) {
+		if ($comment_user_id == $user_id) {
+			printf("\t<td><a class=button href=\"edit.php?c=%s&sid={$_GET['id']}\">Edit</a></td>\n", htmlspecialchars($comment_id));
+			printf("\t<td><a class=button href=\"delete.php?c=%s&sid={$_GET['id']}\">Delete</a></td>\n", htmlspecialchars($comment_id));
+		} else {
+			echo "<td></td>";
+			echo "<td></td>";
+		}
 	}
 	echo "</tr>\n";
 	$count = $count + 1;
