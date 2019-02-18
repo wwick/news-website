@@ -10,7 +10,6 @@
 <body>
 <div id='main'>
 
-<a href="homepage.php" class="button">Homepage</a><br>
 
 <?php
 //acquires all necessary data for the story
@@ -45,8 +44,13 @@ $stmt->close();
 $mysqli->close();
 
 
-//displays story
+//displays story title
 printf("\t<h1>%s</h1>\n", htmlspecialchars($title));
+printf("\t<h2>By: %s</h2>\n", htmlspecialchars($author));
+printf("\t<h3>%s likes</h3>\n", htmlspecialchars($author));
+
+// creates button to return to homepage
+echo "<a href=\"homepage.php\" class=\"button\">Homepage</a>";
 
 if ($user_set) {//you can only like or dislike if you are registered
 	echo "
@@ -56,8 +60,6 @@ if ($user_set) {//you can only like or dislike if you are registered
 }
 
 //displays story
-printf("\t<h1>%s</h1>\n", htmlspecialchars($title));
-printf("\t<h3>By: %s</h3>\n", htmlspecialchars($author));
 printf("\t<p>%s</p>\n", nl2br(htmlspecialchars($story)));
 
 //if you are logged in you can comment
