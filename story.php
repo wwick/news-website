@@ -127,7 +127,6 @@ if ($count != 1) {
 	echo "
 	</tbody>
 	</table>
-	<br>
 	";
 } else {
 	echo "<h3>There are no comments to show. If you are a registered user, you can add a comment for all users to view.</h3>";

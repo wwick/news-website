@@ -68,8 +68,7 @@ a {
 }
 
 textarea {
-    resize: none;
-    height: 300px;
+    height: 200px;
     width: 600px;
 }
 
