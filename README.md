@@ -12,6 +12,7 @@ Will Wick's AWS (467000)- http://ec2-52-14-191-6.us-east-2.compute.amazonaws.com
   - Registered users can write, edit, or delete their own articles
   - Wish to submit anonymously? The author of an article can differ from your user name
   - Love an article? Drop a like. Change your mind? Take it back.
+  - Black text on white backgrounn for maximum readability!
 
 ### How to use
 1. Goto the link above.
