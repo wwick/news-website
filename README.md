@@ -3,9 +3,9 @@
 The website to get all of your news. Stories written by your peers, no censorship.
 ## Links
 ---
-Elijah Pena's AWS - http://ec2-52-15-187-19.us-east-2.compute.amazonaws.com/~elijahpena/spring2019-module3-group-455281-467000/homepage.php
+Elijah Pena's AWS (455281) - http://ec2-52-15-187-19.us-east-2.compute.amazonaws.com/~elijahpena/spring2019-module3-group-455281-467000/homepage.php
 
-Will Wick's AWS - http://ec2-52-14-191-6.us-east-2.compute.amazonaws.com/~wwick/git/spring2019-module3-group-455281-467000/homepage.php
+Will Wick's AWS (467000)- http://ec2-52-14-191-6.us-east-2.compute.amazonaws.com/~wwick/git/spring2019-module3-group-455281-467000/homepage.php
 
 ## Features!
 
