@@ -51,7 +51,7 @@ if ($user_set) {//you can only like or dislike if you are registered
 //displays story
 printf("\t<h1>%s</h1>\n", htmlspecialchars($title));
 printf("\t<h2>By: %s</h2>\n", htmlspecialchars($author));
-printf("\t<p>%s</p>\n", htmlspecialchars($story));
+printf("\t<p>%s</p>\n", nl2br(htmlspecialchars($story)));
 
 //if you are logged in you can comment
 if ($user_set) {
