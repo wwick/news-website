@@ -34,7 +34,7 @@ $stmt->execute();
 $stmt->bind_result($title, $author, $story, $likes);
 
 
-if ($stmt->fetch()){
+if ($stmt->fetch()) {
 	$title = $title;
 	$author = $author;
 	$story = $story;
@@ -44,18 +44,20 @@ if ($stmt->fetch()){
 $stmt->close();
 $mysqli->close();
 
-printf("\t<h3>%s likes</h3>\n", htmlspecialchars($likes));//shows likes
+
+//displays story
+printf("\t<h1>%s</h1>\n", htmlspecialchars($title));
 
 if ($user_set) {//you can only like or dislike if you are registered
 	echo "
-	<a href=\"like.php\" class=\"button\">Like</a><br>
+	<a href=\"like.php\" class=\"button\">Like</a>
 	<a href=\"dislike.php\" class=\"button\">Dislike</a><br>
 	";
 }
 
 //displays story
 printf("\t<h1>%s</h1>\n", htmlspecialchars($title));
-printf("\t<h2>By: %s</h2>\n", htmlspecialchars($author));
+printf("\t<h3>By: %s</h3>\n", htmlspecialchars($author));
 printf("\t<p>%s</p>\n", nl2br(htmlspecialchars($story)));
 
 //if you are logged in you can comment
