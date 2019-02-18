@@ -25,19 +25,6 @@ tbody > tr:nth-child(even) {background: #FFF}
 tbody {color: black}
 
 div#main{
-    overflow: auto;
-    content: "";
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    font-weight: bold;
-    background-size: cover;
-    background-image: linear-gradient(magenta, orange);
-    height: 100%;
-    color: white;
-    font-size: 16px;
-    font-weight: normal;
     padding: 30px;
 }
 
