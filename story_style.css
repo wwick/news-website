@@ -24,9 +24,6 @@ tbody > tr:nth-child(odd) {background: rgb(245, 248, 207);}
 tbody > tr:nth-child(even) {background: #FFF}
 tbody {color: black}
 
-div#main{
-    padding: 30px;
-}
 
 /*button information was recieved from https://www.w3schools.com/css/css3_buttons.asp*/
 .button{
@@ -61,6 +58,7 @@ textarea {
 }
 
 body{
-    width: 600px; /* how wide to make your web page */
-    font:12px/16px Helvetica, Arial, sans-serif; /* default font */
-}
+    width: 1000px; /* how wide to make your web page */
+    font:12px/16px Georgia, Times serif;
+    padding: 30px;
+ }
